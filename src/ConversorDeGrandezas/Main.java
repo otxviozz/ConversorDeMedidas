@@ -18,153 +18,224 @@ public class Main {
 			
 			int escolha = 0;
             try {
-                escolha = scan.nextInt();  // Lê a escolha do menu
+                escolha = scan.nextInt();
                 if (escolha < 1 || escolha > 4) {
                     throw new IllegalArgumentException("Número inválido! Digite um número entre 1 e 4.\n");
                 }
             } catch (IllegalArgumentException e) {
                 System.out.println("Erro: " + e.getMessage());
-                continue; // Continua o loop caso o erro aconteça
+                continue;
             } catch (Exception e) {
                 System.out.println("Erro inesperado: " + e.getMessage());
-                scan.nextLine(); // Limpa o buffer de entrada para evitar loop infinito
+                scan.nextLine();
                 continue;
             }
 			
             int conversao = 0;
-			switch(escolha) {
-			case 1:
-			System.out.println("Distância escolhida!");
-			System.out.println("1. Quilômetros para milhas.");
-			System.out.println("2. Milhas para quilômetros.");
-			System.out.println("Qual conversão você deseja: ");
-			conversao = 0;
-            try {
-                conversao = scan.nextInt();  // Lê a escolha do menu
-                if (conversao < 1 || conversao > 2) {
-                    throw new IllegalArgumentException("Escolha inválida! Digite 1 ou 2.\n");
+            switch (escolha) {
+            case 1:
+                System.out.println("Distância escolhida!");
+                System.out.println("1. Quilômetros para milhas.");
+                System.out.println("2. Milhas para quilômetros.");
+
+                while (true) {
+                    System.out.print("Qual conversão você deseja (1 ou 2): ");
+                    try {
+                        conversao = scan.nextInt();
+                        scan.nextLine();
+                        if (conversao == 1) {
+                        	double valor = 0;
+                            while (true) {
+                                System.out.print("Digite o valor de quilômetros: ");
+                                String entrada = scan.nextLine().replace(",", ".");
+                                try {
+                                    valor = Double.parseDouble(entrada);
+                                    break;
+                                } catch (NumberFormatException e) {
+                                    System.out.println("Valor inválido! Use apenas números (com ponto como separador decimal).");
+                                }
+                            }
+                            double resultado = valor * 0.621371;
+                            System.out.printf("%.2f km em milhas é igual a %.2f milhas.%n", valor, resultado);
+                            break;
+                        } else if (conversao == 2) {
+                        	double valor = 0;
+                            while (true) {
+                                System.out.print("Digite o valor de milhas: ");
+                                String entrada = scan.nextLine().replace(",", ".");
+                                try {
+                                    valor = Double.parseDouble(entrada);
+                                    break;
+                                } catch (NumberFormatException e) {
+                                    System.out.println("Valor inválido! Use apenas números (com ponto como separador decimal).");
+                                }
+                            }
+                            double resultado = valor * 1.60934;
+                            System.out.printf("%.2f milhas em km é igual a %.2f km.%n", valor, resultado);
+                            break;
+                        } else {
+                            System.out.println("Escolha inválida! Digite 1 ou 2.");
+                        }
+                    } catch (Exception e) {
+                        System.out.println("Entrada inválida! Tente novamente.");
+                        scan.nextLine();
+                    }
                 }
-            } catch (IllegalArgumentException e) {
-                System.out.println("Erro: " + e.getMessage());
-                continue; // Continua o loop caso o erro aconteça
-            } catch (Exception e) {
-                System.out.println("Erro inesperado: " + e.getMessage());
-                scan.nextLine(); // Limpa o buffer de entrada para evitar loop infinito
-                continue;
-            }
-            if(escolha== 1 && conversao== 1) {
-            	System.out.println("Digite o valor de quilômetros: ");
-            	double valor = scan.nextInt();
-            	double resultado = valor * 0.621371;
-            	System.out.printf("%.2f km em milhas é igual a %.2f milhas.%n", valor, resultado);
-            }
-            if(escolha== 1 && conversao== 2) {
-            	System.out.println("Digite o valor de milhas: ");
-            	double valor = scan.nextInt();
-            	double resultado = valor * 1.60934;
-            	System.out.printf("%.2f km em milhas é igual a %.2f milhas.%n", valor, resultado);
-            }
-            break;
-				
-			case 2:
-				System.out.println("Massa escolhida!");
-				System.out.println("1. Quilogramas para onças.");
-				System.out.println("2. Onças para quilogramas.");
-				System.out.println("Qual conversão você deseja: ");
-				conversao = 0;
-	            try {
-	                conversao = scan.nextInt();  // Lê a escolha do menu
-	                if (conversao < 1 || conversao > 2) {
-	                    throw new IllegalArgumentException("Escolha inválida! Digite 1 ou 2.\n");
-	                }
-	            } catch (IllegalArgumentException e) {
-	                System.out.println("Erro: " + e.getMessage());
-	                continue; // Continua o loop caso o erro aconteça
-	            } catch (Exception e) {
-	                System.out.println("Erro inesperado: " + e.getMessage());
-	                scan.nextLine(); // Limpa o buffer de entrada para evitar loop infinito
-	                continue;
-	            }
-	            if(escolha== 1 && conversao== 1) {
-	            	System.out.println("Digite o valor de quilogramas: ");
-	            	double valor = scan.nextInt();
-	            	double resultado = valor * 35.274;
-	            	System.out.printf("%.2f kg em onças é igual a %.2f onças.%n", valor, resultado);
-	            }
-	            if(escolha== 1 && conversao== 2) {
-	            	System.out.println("Digite o valor de milhas: ");
-	            	double valor = scan.nextInt();
-	            	double resultado = valor * 0.0283495;
-	            	System.out.printf("%.2f onças em kg é igual a %.2f kg.%n", valor, resultado);
-	            }
-	            break;
-				
-			case 3:
-				System.out.println("Temperatura escolhida!");
-				System.out.println("1. Celsius para Fahrenheit.");
-				System.out.println("2. Fahrenheit para Celsius.");
-				System.out.println("Qual conversão você deseja: ");
-				conversao = 0;
-	            try {
-	                conversao = scan.nextInt();  // Lê a escolha do menu
-	                if (conversao < 1 || conversao > 2) {
-	                    throw new IllegalArgumentException("Escolha inválida! Digite 1 ou 2.\n");
-	                }
-	            } catch (IllegalArgumentException e) {
-	                System.out.println("Erro: " + e.getMessage());
-	                continue; // Continua o loop caso o erro aconteça
-	            } catch (Exception e) {
-	                System.out.println("Erro inesperado: " + e.getMessage());
-	                scan.nextLine(); // Limpa o buffer de entrada para evitar loop infinito
-	                continue;
-	            }
-	            if(escolha== 1 && conversao== 1) {
-	            	System.out.println("Digite o valor de Celsius: ");
-	            	double valor = scan.nextInt();
-	            	double resultado = (valor * 9/5) + 32;
-	            	System.out.printf("%.2f Celsius em Fahrenheit é igual a %.2f F.%n", valor, resultado);
-	            }
-	            if(escolha== 1 && conversao== 2) {
-	            	System.out.println("Digite o valor de Fahrenheit: ");
-	            	double valor = scan.nextInt();
-	            	double resultado = (valor - 32) * 5/9;
-	            	System.out.printf("%.2f Fahrenheit em Celsius é igual a %.2f C.%n", valor, resultado);
-	            }
-	            break;
-				
-			case 4:
-				System.out.println("Área escolhida!");
-				System.out.println("1. Metro quadrado para jarda quadrada.");
-				System.out.println("2. Jarda quadrada para metro quadrado.");
-				System.out.println("Qual conversão você deseja: ");
-				conversao = 0;
-	            try {
-	                conversao = scan.nextInt();  // Lê a escolha do menu
-	                if (conversao < 1 || conversao > 2) {
-	                    throw new IllegalArgumentException("Escolha inválida! Digite 1 ou 2.\n");
-	                }
-	            } catch (IllegalArgumentException e) {
-	                System.out.println("Erro: " + e.getMessage());
-	                continue; // Continua o loop caso o erro aconteça
-	            } catch (Exception e) {
-	                System.out.println("Erro inesperado: " + e.getMessage());
-	                scan.nextLine(); // Limpa o buffer de entrada para evitar loop infinito
-	                continue;
-	            }
-	            if(escolha== 1 && conversao== 1) {
-	            	System.out.println("Digite o valor de quilogramas: ");
-	            	double valor = scan.nextInt();
-	            	double resultado = valor * 1.19599;
-	            	System.out.printf("%.2f m2 em jardas quadradas é igual a %.2f jardas quadradas.%n", valor, resultado);
-	            }
-	            if(escolha== 1 && conversao== 2) {
-	            	System.out.println("Digite o valor de milhas: ");
-	            	double valor = scan.nextInt();
-	            	double resultado = valor * 0.836127;
-	            	System.out.printf("%.2f jardas quadradas em m2 é igual a %.2f m2.%n", valor, resultado);
-	            }
-	            break;
-			}
+                break;
+
+            case 2:
+                System.out.println("Massa escolhida!");
+                System.out.println("1. Quilogramas para onças.");
+                System.out.println("2. Onças para quilogramas.");
+
+                while (true) {
+                    System.out.print("Qual conversão você deseja (1 ou 2): ");
+                    try {
+                        conversao = scan.nextInt();
+                        scan.nextLine();
+                        if (conversao == 1) {
+                        	double valor = 0;
+                            while (true) {
+                                System.out.print("Digite o valor de quilogramas: ");
+                                String entrada = scan.nextLine().replace(",", ".");
+                                try {
+                                    valor = Double.parseDouble(entrada);
+                                    break;
+                                } catch (NumberFormatException e) {
+                                    System.out.println("Valor inválido! Use apenas números (com ponto como separador decimal).");
+                                }
+                            }
+                            double resultado = valor * 35.274;
+                            System.out.printf("%.2f kg em onças é igual a %.2f onças.%n", valor, resultado);
+                            break;
+                        } else if (conversao == 2) {
+                        	double valor = 0;
+                            while (true) {
+                                System.out.print("Digite o valor de onças: ");
+                                String entrada = scan.nextLine().replace(",", ".");
+                                try {
+                                    valor = Double.parseDouble(entrada);
+                                    break;
+                                } catch (NumberFormatException e) {
+                                    System.out.println("Valor inválido! Use apenas números (com ponto como separador decimal).");
+                                }
+                            }
+                            double resultado = valor * 0.0283495;
+                            System.out.printf("%.2f onças em kg é igual a %.2f kg.%n", valor, resultado);
+                            break;
+                        } else {
+                            System.out.println("Escolha inválida! Digite 1 ou 2.");
+                        }
+                    } catch (Exception e) {
+                        System.out.println("Entrada inválida! Tente novamente.");
+                        scan.nextLine();
+                    }
+                }
+                break;
+
+            case 3:
+                System.out.println("Temperatura escolhida!");
+                System.out.println("1. Celsius para Fahrenheit.");
+                System.out.println("2. Fahrenheit para Celsius.");
+
+                while (true) {
+                    System.out.print("Qual conversão você deseja (1 ou 2): ");
+                    try {
+                        conversao = scan.nextInt();
+                        scan.nextLine();
+                        if (conversao == 1) {
+                        	double valor = 0;
+                            while (true) {
+                                System.out.print("Digite o valor em Celsius: ");
+                                String entrada = scan.nextLine().replace(",", ".");
+                                try {
+                                    valor = Double.parseDouble(entrada);
+                                    break;
+                                } catch (NumberFormatException e) {
+                                    System.out.println("Valor inválido! Use apenas números (com ponto como separador decimal).");
+                                }
+                            }
+                            double resultado = (valor * 9 / 5) + 32;
+                            System.out.printf("%.2f °C em Fahrenheit é igual a %.2f °F.%n", valor, resultado);
+                            break;
+                        } else if (conversao == 2) {
+                        	double valor = 0;
+                            while (true) {
+                                System.out.print("Digite o valor em Fahrenheit: ");
+                                String entrada = scan.nextLine().replace(",", ".");
+                                try {
+                                    valor = Double.parseDouble(entrada);
+                                    break;
+                                } catch (NumberFormatException e) {
+                                    System.out.println("Valor inválido! Use apenas números (com ponto como separador decimal).");
+                                }
+                            }
+                            double resultado = (valor - 32) * 5 / 9;
+                            System.out.printf("%.2f °F em Celsius é igual a %.2f °C.%n", valor, resultado);
+                            break;
+                        } else {
+                            System.out.println("Escolha inválida! Digite 1 ou 2.");
+                        }
+                    } catch (Exception e) {
+                        System.out.println("Entrada inválida! Tente novamente.");
+                        scan.nextLine();
+                    }
+                }
+                break;
+
+            case 4:
+                System.out.println("Área escolhida!");
+                System.out.println("1. Metro quadrado para jarda quadrada.");
+                System.out.println("2. Jarda quadrada para metro quadrado.");
+
+                while (true) {
+                    System.out.print("Qual conversão você deseja (1 ou 2): ");
+                    try {
+                        conversao = scan.nextInt();
+                        scan.nextLine();
+                        if (conversao == 1) {
+                        	double valor = 0;
+                            while (true) {
+                                System.out.print("Digite o valor em metros quadrados: ");
+                                String entrada = scan.nextLine().replace(",", ".");
+                                try {
+                                    valor = Double.parseDouble(entrada);
+                                    break;
+                                } catch (NumberFormatException e) {
+                                    System.out.println("Valor inválido! Use apenas números (com ponto como separador decimal).");
+                                }
+                            }
+                            double resultado = valor * 1.19599;
+                            System.out.printf("%.2f m² em jardas² é igual a %.2f jardas².%n", valor, resultado);
+                            break;
+                        } else if (conversao == 2) {
+                        	double valor = 0;
+                            while (true) {
+                                System.out.print("Digite o valor em jardas quadradas: ");
+                                String entrada = scan.nextLine().replace(",", ".");
+                                try {
+                                    valor = Double.parseDouble(entrada);
+                                    break;
+                                } catch (NumberFormatException e) {
+                                    System.out.println("Valor inválido! Use apenas números (com ponto como separador decimal).");
+                                }
+                            }
+                            double resultado = valor * 0.836127;
+                            System.out.printf("%.2f jardas² em m² é igual a %.2f m².%n", valor, resultado);
+                            break;
+                        } else {
+                            System.out.println("Escolha inválida! Digite 1 ou 2.");
+                        }
+                    } catch (Exception e) {
+                        System.out.println("Entrada inválida! Tente novamente.");
+                        scan.nextLine();
+                    }
+                }
+                break;
+
+            default:
+                System.out.println("Categoria inválida!");
+        }
 		}
 
 	}
