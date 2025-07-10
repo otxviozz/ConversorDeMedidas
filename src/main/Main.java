@@ -1,7 +1,10 @@
 package main;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
+import historic.Historico;
+import model.ConversionData;
 import ui.Menu;
 import ui.OperationChoose;
 
@@ -10,6 +13,7 @@ public class Main {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
         OperationChoose operationChoose = new OperationChoose();
+        ArrayList<Historico> historicos = new ArrayList<>();
 
         while (true) {
             Menu.showMenu();
@@ -19,7 +23,12 @@ public class Main {
                 continue;
             }
 
-            operationChoose.executeOperation(userChoice, scan);
+            ConversionData data = new ConversionData();
+            data.setChoice(userChoice);
+
+            operationChoose.executeOperation(data, scan);
+            historicos.add(new Historico(data));
+
 
             String resposta;
 
@@ -38,7 +47,8 @@ public class Main {
                 break;
             }
         }
-
-        System.out.println("Programa encerrado!");
+        
+        Historico.operacoesRealizadas(historicos);
+        System.out.println("\nPrograma encerrado!");
     }
 }

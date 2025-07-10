@@ -5,8 +5,7 @@ import java.util.Scanner;
 import model.ConversionData;
 
 public class DistanceConverter {
-    public static void convert(Scanner scan) {
-    	ConversionData data = new ConversionData();
+	public static void convert(Scanner scan, ConversionData data) {
     	
         System.out.println("Distância escolhida!");
         System.out.println("1. Quilômetros para milhas.");

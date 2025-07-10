@@ -5,8 +5,7 @@ import java.util.Scanner;
 import model.ConversionData;
 
 public class MassConverter {
-    public static void convert(Scanner scan) {
-    	ConversionData data = new ConversionData();
+	public static void convert(Scanner scan, ConversionData data) {
     	
     	System.out.println("Massa escolhida!");
         System.out.println("1. Quilogramas para onças.");

@@ -5,9 +5,8 @@ import java.util.Scanner;
 import model.ConversionData;
 
 public class TemperatureConverter {
-    public static void convert(Scanner scan) {
-    	ConversionData data = new ConversionData();
-    	
+	public static void convert(Scanner scan, ConversionData data) {
+
     	System.out.println("Temperatura escolhida!");
         System.out.println("1. Celsius para Fahrenheit.");
         System.out.println("2. Fahrenheit para Celsius.");

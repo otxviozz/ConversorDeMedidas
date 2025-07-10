@@ -5,8 +5,7 @@ import java.util.Scanner;
 import model.ConversionData;
 
 public class AreaConverter {
-    public static void convert(Scanner scan) {
-        ConversionData data = new ConversionData();
+    public static void convert(Scanner scan, ConversionData data) {
 
         System.out.println("Área escolhida!");
         System.out.println("1. Metro quadrado para jarda quadrada.");
