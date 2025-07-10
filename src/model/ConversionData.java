@@ -5,6 +5,7 @@ public class ConversionData {
     private int conversao;
     private double valor;
     private String entrada;
+    private double resultado;
 
     // Getter e Setter para choice
     public int getChoice() {
@@ -40,5 +41,14 @@ public class ConversionData {
 
     public void setEntrada(String entrada) {
         this.entrada = entrada;
+    }
+    
+ // Getter e Setter para resultado
+    public double getResultado() {
+        return resultado;
+    }
+
+    public void setResultado(double resultado) {
+        this.resultado = resultado;
     }
 }

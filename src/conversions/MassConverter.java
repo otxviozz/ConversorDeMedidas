@@ -24,13 +24,15 @@ public class MassConverter {
                 if (data.getConversao() == 1) {
                     double valor = Values.solicitarValor(scan, "quilogramas", data);
                     double resultado = valor * 35.274;
-                    System.out.printf("%.2f kg em onças é igual a %.2f onças.%n", valor, resultado);
+                    data.setResultado(resultado);
+                    System.out.printf("%.2f kg em onças é igual a %.2f onças.%n", data.getValor(), data.getResultado());
                     break;
 
                 } else if (data.getConversao() == 2) {
                     double valor = Values.solicitarValor(scan, "onças", data);
                     double resultado = valor * 0.0283495;
-                    System.out.printf("%.2f onças em kg é igual a %.2f kg.%n", valor, resultado);
+                    data.setResultado(resultado);
+                    System.out.printf("%.2f onças em kg é igual a %.2f kg.%n", data.getValor(), data.getResultado());
                     break;
 
                 } else {

@@ -23,13 +23,15 @@ public class AreaConverter {
                 if (data.getConversao() == 1) {
                     double valor = Values.solicitarValor(scan, "m²", data);
                     double resultado = valor * 1.19599;
-                    System.out.printf("%.2f m² em jardas² é igual a %.2f jardas².%n", valor, resultado);
+                    data.setResultado(resultado);
+                    System.out.printf("%.2f m² em jardas² é igual a %.2f jardas².%n", data.getValor(), data.getResultado());
                     break;
 
                 } else if (data.getConversao() == 2) {
                     double valor = Values.solicitarValor(scan, "jarda²", data);
                     double resultado = valor * 0.836127;
-                    System.out.printf("%.2f jardas² em m² é igual a %.2f m².%n", valor, resultado);
+                    data.setResultado(resultado);
+                    System.out.printf("%.2f jardas² em m² é igual a %.2f m².%n", data.getValor(), data.getResultado());
                     break;
 
                 } else {

@@ -24,13 +24,15 @@ public class DistanceConverter {
                 if (data.getConversao() == 1) {
                     double valor = Values.solicitarValor(scan, "quilômetros", data);
                     double resultado = valor * 0.621371;
-                    System.out.printf("%.2f km em milhas é igual a %.2f milhas.%n", valor, resultado);
+                    data.setResultado(resultado);
+                    System.out.printf("%.2f km em milhas é igual a %.2f milhas.%n", data.getValor(), data.getResultado());
                     break;
 
                 } else if (data.getConversao() == 2) {
                     double valor = Values.solicitarValor(scan, "milhas", data);
                     double resultado = valor * 1.60934;
-                    System.out.printf("%.2f milhas em km é igual a %.2f km.%n", valor, resultado);
+                    data.setResultado(resultado);
+                    System.out.printf("%.2f milhas em km é igual a %.2f km.%n", data.getValor(), data.getResultado());
                     break;
 
                 } else {

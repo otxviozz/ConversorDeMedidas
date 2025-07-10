@@ -24,13 +24,15 @@ public class TemperatureConverter {
                 if (data.getConversao() == 1) {
                     double valor = Values.solicitarValor(scan, "Celsius", data);
                     double resultado = (valor * 9 / 5) + 32;
-                    System.out.printf("%.2f °C em Fahrenheit é igual a %.2f °F.%n", valor, resultado);
+                    data.setResultado(resultado);
+                    System.out.printf("%.2f °C em Fahrenheit é igual a %.2f °F.%n", data.getValor(), data.getResultado());
                     break;
 
                 } else if (data.getConversao() == 2) {
                     double valor = Values.solicitarValor(scan, "Fahrenheit", data);
                     double resultado = (valor - 32) * 5 / 9;
-                    System.out.printf("%.2f °F em Celsius é igual a %.2f °C.%n", valor, resultado);
+                    data.setResultado(resultado);
+                    System.out.printf("%.2f °F em Celsius é igual a %.2f °C.%n", data.getValor(), data.getResultado());
                     break;
 
                 } else {
