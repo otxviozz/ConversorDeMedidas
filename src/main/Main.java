@@ -21,10 +21,20 @@ public class Main {
 
             operationChoose.executeOperation(userChoice, scan);
 
-            System.out.println("\nDeseja realizar outra conversão? (s/n)");
-            String resposta = scan.next();
+            String resposta;
 
-            if (!resposta.equalsIgnoreCase("s")) {
+            while (true) {
+                System.out.println("\nDeseja realizar outra conversão? (s/n)");
+                resposta = scan.next().trim().toLowerCase();
+
+                if (resposta.equals("s") || resposta.equals("n")) {
+                    break;
+                } else {
+                    System.out.println("Entrada inválida! Digite apenas 's' para sim ou 'n' para não.");
+                }
+            }
+
+            if (resposta.equals("n")) {
                 break;
             }
         }
