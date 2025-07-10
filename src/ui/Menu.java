@@ -2,6 +2,8 @@ package ui;
 
 import java.util.Scanner;
 
+import model.ConversionData;
+
 public class Menu {
 
     public static void showMenu() {
@@ -14,12 +16,13 @@ public class Menu {
     }
 
     public static int readUserChoice(Scanner scanner) {
-        int choice = 0;
+        ConversionData data = new ConversionData();
         try {
-            choice = scanner.nextInt();
+            int choice = scanner.nextInt();
             if (choice < 1 || choice > 4) {
                 throw new IllegalArgumentException("Número inválido! Digite um número entre 1 e 4.\n");
             }
+            data.setChoice(choice);
         } catch (IllegalArgumentException e) {
             System.out.println("Erro: " + e.getMessage());
             return -1;
@@ -28,6 +31,6 @@ public class Menu {
             scanner.nextLine(); // limpa o buffer
             return -1;
         }
-        return choice;
+        return data.getChoice();
     }
 }
