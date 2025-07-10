@@ -2,8 +2,12 @@ package conversions;
 
 import java.util.Scanner;
 
+import model.ConversionData;
+
 public class TemperatureConverter {
     public static void convert(Scanner scan) {
+    	ConversionData data = new ConversionData();
+    	
     	System.out.println("Temperatura escolhida!");
         System.out.println("1. Celsius para Fahrenheit.");
         System.out.println("2. Fahrenheit para Celsius.");
@@ -14,15 +18,17 @@ public class TemperatureConverter {
             try {
                 conversao = scan.nextInt();
                 scan.nextLine();
+                
+                data.setConversao(conversao);
 
-                if (conversao == 1) {
-                    double valor = Values.solicitarValor(scan, "Celsius");
+                if (data.getConversao() == 1) {
+                    double valor = Values.solicitarValor(scan, "Celsius", data);
                     double resultado = (valor * 9 / 5) + 32;
                     System.out.printf("%.2f °C em Fahrenheit é igual a %.2f °F.%n", valor, resultado);
                     break;
 
-                } else if (conversao == 2) {
-                    double valor = Values.solicitarValor(scan, "Fahrenheit");
+                } else if (data.getConversao() == 2) {
+                    double valor = Values.solicitarValor(scan, "Fahrenheit", data);
                     double resultado = (valor - 32) * 5 / 9;
                     System.out.printf("%.2f °F em Celsius é igual a %.2f °C.%n", valor, resultado);
                     break;

@@ -2,8 +2,12 @@ package conversions;
 
 import java.util.Scanner;
 
+import model.ConversionData;
+
 public class DistanceConverter {
     public static void convert(Scanner scan) {
+    	ConversionData data = new ConversionData();
+    	
         System.out.println("Distância escolhida!");
         System.out.println("1. Quilômetros para milhas.");
         System.out.println("2. Milhas para quilômetros.");
@@ -14,15 +18,17 @@ public class DistanceConverter {
             try {
                 conversao = scan.nextInt();
                 scan.nextLine();
+                
+                data.setConversao(conversao);
 
-                if (conversao == 1) {
-                    double valor = Values.solicitarValor(scan, "quilômetros");
+                if (data.getConversao() == 1) {
+                    double valor = Values.solicitarValor(scan, "quilômetros", data);
                     double resultado = valor * 0.621371;
                     System.out.printf("%.2f km em milhas é igual a %.2f milhas.%n", valor, resultado);
                     break;
 
-                } else if (conversao == 2) {
-                    double valor = Values.solicitarValor(scan, "milhas");
+                } else if (data.getConversao() == 2) {
+                    double valor = Values.solicitarValor(scan, "milhas", data);
                     double resultado = valor * 1.60934;
                     System.out.printf("%.2f milhas em km é igual a %.2f km.%n", valor, resultado);
                     break;
